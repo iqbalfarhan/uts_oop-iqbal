@@ -1,56 +1,56 @@
 <?php
 
 // Parent class
-class ProdukDigital {
+class PekerjaKreatif {
     protected string $nama;
-    protected int $harga;
+    protected string $bidang;
 
-    public function __construct(string $nama, int $harga) {
+    public function __construct(string $nama, string $bidang) {
         $this->nama = $nama;
-        $this->harga = $harga;
+        $this->bidang = $bidang;
     }
 
     public function info(): void {
-        echo "Nama Produk: {$this->nama}, Harga: Rp{$this->harga}\n";
+        echo "Nama: {$this->nama}, Bidang: {$this->bidang}\n";
     }
 }
 
-// Child class 1 - Aplikasi Mobile
-class AplikasiMobile extends ProdukDigital {
-    private string $platform; // Android / iOS
+// Child class 1 - Desainer Grafis
+class DesainerGrafis extends PekerjaKreatif {
+    private string $softwareFavorit;
 
-    public function __construct(string $nama, int $harga, string $platform) {
-        parent::__construct($nama, $harga);
-        $this->platform = $platform;
+    public function __construct(string $nama, string $softwareFavorit) {
+        parent::__construct($nama, "Desain Grafis");
+        $this->softwareFavorit = $softwareFavorit;
     }
 
     public function info(): void {
         parent::info();
-        echo "Platform: {$this->platform}\n";
+        echo "Software Favorit: {$this->softwareFavorit}\n";
     }
 }
 
-// Child class 2 - Plugin Website
-class PluginWebsite extends ProdukDigital {
-    private string $cms; // WordPress, Joomla, dll
+// Child class 2 - Penulis Konten
+class PenulisKonten extends PekerjaKreatif {
+    private string $niche;
 
-    public function __construct(string $nama, int $harga, string $cms) {
-        parent::__construct($nama, $harga);
-        $this->cms = $cms;
+    public function __construct(string $nama, string $niche) {
+        parent::__construct($nama, "Penulisan Konten");
+        $this->niche = $niche;
     }
 
     public function info(): void {
         parent::info();
-        echo "CMS Support: {$this->cms}\n";
+        echo "Niche Spesialis: {$this->niche}\n";
     }
 }
 
 // Tes
-$aplikasi = new AplikasiMobile("TodoBuddy", 150000, "Android");
-$plugin = new PluginWebsite("SEO Booster", 100000, "WordPress");
+$desainer = new DesainerGrafis("Alya", "Adobe Illustrator");
+$penulis = new PenulisKonten("Rizky", "Tech & Gadget");
 
-echo "--- Info Aplikasi Mobile ---\n";
-$aplikasi->info();
+echo "--- Info Desainer Grafis ---\n";
+$desainer->info();
 
-echo "\n--- Info Plugin Website ---\n";
-$plugin->info();
+echo "\n--- Info Penulis Konten ---\n";
+$penulis->info();
